@@ -1,0 +1,23 @@
+---
+title: "Sightseeing in San Diego - Leaflete"
+author: "K Cousar"
+date: "September 16, 2020"
+output: html_document
+---
+
+# Things to See in San Diego
+
+```{r}
+library(leaflet)
+df <- data.frame(
+  lat= c(32.7341, 32.8503, 32.6807),
+  lng= c(-117.1446, -117.2730, -117.1781))
+sites <- c(
+  "<a href='https://www.balboapark.org'>Balboa Park</a>",
+  "<a href='https://www.lajolla.com/guides/la-jolla-cove/'>La Jolla Cove</a>",
+  "<a href='https://hoteldel.com'>Hotel del Coronado</a>")
+  
+df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup = sites)
